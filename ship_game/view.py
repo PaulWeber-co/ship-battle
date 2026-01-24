@@ -1,6 +1,6 @@
 #grid ausgeben
 import numpy as np
-"""
+
 import matplotlib.pyplot as plt
 from matplotlib import patches
 
@@ -23,4 +23,7 @@ ax.add_patch(rect)
 
 plt.gca().set_aspect('equal', adjustable='box')
 plt.show()
-"""
+
+
+class RPSView:
+    pass
