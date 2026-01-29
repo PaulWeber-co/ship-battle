@@ -7,4 +7,4 @@ if __name__ == "__main__":
     view = View()
     controller = Controller(model, view)
     controller.test()
-    view.print_grid()
+    view.show_board()

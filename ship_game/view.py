@@ -1,5 +1,4 @@
-import tkinter as tk
-import string
+
 from model import Model
 
 class View:
@@ -21,20 +20,11 @@ class View:
         "in einem 10x10 Grid von oben nach unten platzieren.\nWo soll das Schiff hin?"
         )
 
-    def print_grid(self):
 
-        cols = list(range(0, 10))                  # 1–10
-        rows = list(range(0, 10))   # A–J
-
-        print("   ", end="")
-        for c in cols:
-            print(f"{c:>3}", end="")
-        print()
-        for r in rows:
-            print(f"{r} |", end="")
-            for _ in cols:
-                print(" . ", end="")
-            print()
+class ConsoleView:
+    def show_board(self, board):
+        for row in board.grid:
+            print(" ".join(row))
 
 
 
