@@ -1,24 +1,3 @@
-#Rock Paper Scissors
-
-print("Wähle Rock (1), Paper (2) oder Scissors (3)")
-
-#man selbst wählt zwischen den 3
-
-#Computer generiert Zufallszahl 1-3
-#definition jeweils was
-#if 1 entspricht Rock
-"""case 1: Random Zahl des Computers = 1 draw
-case: 2 lose
-case: 3 win
-else: "Something went wrong"
-
-view: draw, win, loseprint()
-
-Statistics?
-Multi User,
-statt compter random number 2 mal frage nach 1-3
-score auf 0 setzen und dann score++
-anschließend ausgeben"""
 
 
 
