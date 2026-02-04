@@ -11,7 +11,7 @@ class Model:
             self.hits += 1
 
         def is_sunk(self):
-            return self.hits <= self.length
+            return self.hits >= self.length
 #Spielbrett
     class Board:
         Water = "."
@@ -26,6 +26,7 @@ class Model:
         def place_ship(self, ship, positions):
             for (r, c) in positions:
                 self.ships[(r, c)] = ship
+                self.grid[r][c] = "X"
 #Array mit verfügbaren Schiffen
     ships = [
         Ship("F125", 5),

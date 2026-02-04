@@ -7,4 +7,10 @@ if __name__ == "__main__":
     view = View()
     controller = Controller(model, view)
     controller.test()
-    view.show_board()
+    board = model.Board()
+    ship = model.ships[0]
+    positions = [(0, i) for i in range(ship.length)]
+    board.place_ship(ship, positions)
+    console_view = View.ConsoleView()
+    console_view.show_board(board)
+

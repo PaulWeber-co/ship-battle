@@ -1,4 +1,3 @@
-
 from model import Model
 
 class View:
@@ -21,10 +20,14 @@ class View:
         )
 
 
-class ConsoleView:
-    def show_board(self, board):
-        for row in board.grid:
-            print(" ".join(row))
-
-
-
+    class ConsoleView:
+        def show_board(self, board):
+            size = board.size
+            # Kopfzeile: Platz für Zeilenlabel + Spaltennummern (ausgerichtet für bis zu 2 Stellen)
+            header = " " + " ".join(f"{i+1:2}" for i in range(size))
+            print(header)
+            # Jede Zeile mit Buchstabenlabel (A, B, C, ...)
+            for r, row in enumerate(board.grid):
+                label = chr(ord('A') + r) if r < 26 else str(r)
+                # Zellen ebenfalls etwas gepolstert, damit die Spalten ausgerichtet bleiben
+                print(f"{label} " + " ".join(f"{cell:2}" for cell in row))
