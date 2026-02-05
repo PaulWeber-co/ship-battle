@@ -144,3 +144,11 @@ for r in range(10):
     Ziffern[25] = "X"
     Ziffern[88] = "o"
 """
+print("In welche Zeile möchtest du das Schiff setzen? (A-J)")
+try:
+    y = ord(input().upper()) - ord("A")
+    print("In welche Spalte möchtest du das Schiff setzen? (1-10)")
+    x = int(input()) - 1
+    self.grid[y][x] = "X"
+except(IndexError, ValueError):
+    print("Ungültige Eingabe. Bitte versuche es erneut.")

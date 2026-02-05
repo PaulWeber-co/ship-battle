@@ -9,7 +9,7 @@
 #Random Nummer ausgeben (1-6)
 import random
 #print(random.randrange(1,7))
-
+"""
 def calcPoss():
     i = 1
     while i <= 6:
@@ -87,4 +87,70 @@ elif ent == "2":
 #Einfaches Würfelprogramm (Google)
 result = random.randint(1, 6)
 print("You rolled", {result})
+"""
+SIZE = 10
+SHIPS = 4
 
+def create_grid():
+    return [["~" for _ in range(SIZE)] for _ in range(SIZE)]
+
+def print_grid(grid):
+    print("  " + " ".join(str(i) for i in range(SIZE)))
+    for i in range(SIZE):
+        print(i, " ".join(grid[i]))
+
+def place_ships_manually(player):
+    grid = create_grid()
+    ships = set()
+
+    print(f"\nSpieler {player}: Schiffe platzieren")
+
+    while len(ships) < SHIPS:
+        print_grid(grid)
+        x = int(input("x (0-9): "))
+        y = int(input("y (0-9): "))
+
+        if (x, y) in ships:
+            print("Hier ist schon ein Schiff.")
+        else:
+            ships.add((x, y))
+            grid[x][y] = "S"
+
+    print("\nDein Grid:")
+    print_grid(grid)
+    input("Weiter mit Enter (Gegner nicht hinschauen!)")
+    return grid, ships
+
+
+# Platzierung
+grid_p1, ships_p1 = place_ships_manually(1)
+grid_p2, ships_p2 = place_ships_manually(2)
+
+current_player = 1
+
+# Spielphase
+while True:
+    print(f"\nSpieler {current_player} ist am Zug")
+    x = int(input("x (0-9): "))
+    y = int(input("y (0-9): "))
+
+    if current_player == 1:
+        grid = grid_p2
+        ships = ships_p2
+        opponent = 2
+    else:
+        grid = grid_p1
+        ships = ships_p1
+        opponent = 1
+
+    if (x, y) in ships:
+        print("Treffer!")
+        ships.remove((x, y))
+        grid[x][y] = "X"
+        if len(ships) == 0:
+            print(f"Spieler {current_player} gewinnt.")
+            break
+    else:
+        print("Wasser.")
+        grid[x][y] = "O"
+        current_player = opponent

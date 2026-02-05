@@ -3,8 +3,8 @@ from model import Model
 class View:
 
 
-    def show_menu_single(self):
-        print("1 Player Mode (1) or 2 Player Mode (2)")
+    #def show_menu_single(self):
+       # print("1 Player Mode (1) or 2 Player Mode (2)")
 
     def get_input(self):
         try:
@@ -20,4 +20,5 @@ class View:
             "in einem 10x10 Grid horizontal platzieren."
         )
 
-
+    def get_coord(self, prompt="Koordinate: "):
+        return input(prompt).strip()
