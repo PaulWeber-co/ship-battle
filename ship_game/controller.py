@@ -5,10 +5,10 @@ class Controller:
         self.view = view
 
     def run(self):
-        # Anzeige der Schiffstypen
-        self.view.show_instruction_ships(self.model.ship_templates)
+        #Schiffstypen
+        self.view.show_instruction_ships(self.model.ship_list)
 
-        # Spieler 1 platziert
+        # Spieler 1
         print("\nSpieler 1 platziert")
         self.model.display_grid(player=1, show_ships=True)
         self.model.place_ship(player=1)
@@ -17,7 +17,7 @@ class Controller:
 
         input("\nWeitergeben an Spieler 2 und Enter drücken...")
 
-        # Spieler 2 platziert
+        # Spieler 2
         print("\nSpieler 2 platziert")
         self.model.display_grid(player=2, show_ships=True)
         self.model.place_ship(player=2)
@@ -26,13 +26,13 @@ class Controller:
 
         input("\nSpiel starten. Enter drücken")
 
-        # Spiel-Schleife: abwechselnd schießen
+
         current = 1
         while True:
             opponent = 2 if current == 1 else 1
-            print(f"\n--- Spieler {current} ist am Zug ---")
+            print(f"\nSpieler {current} ist am Zug")
             # Zeige das gegnerische Feld ohne Schiffe
-            print("Gegnerisches Feld (getarnte Schiffe):")
+            print("Gegnerisches Feld:")
             self.model.display_grid(player=opponent, show_ships=False)
 
             coord = self.view.get_coord(f"[Spieler {current}] Ziel eingeben ")
@@ -63,10 +63,6 @@ class Controller:
                 print("Spieler 2 Board:")
                 self.model.display_grid(player=2, show_ships=True)
                 break
-
-            # Zug wechseln nur bei Fehlschuss; bei Treffer/Sunk bleibt derselbe Spieler am Zug
             if result == "miss":
                 current = opponent
 
-    def test(self):
-        self.view.show_instruction()
