@@ -7,3 +7,4 @@ if __name__ == "__main__":
     view = View()
     controller = Controller(model, view)
     controller.run()
+#TODO nach jedem setzen karte anzeigen

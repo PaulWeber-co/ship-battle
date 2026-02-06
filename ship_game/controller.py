@@ -3,7 +3,7 @@ class Controller:
     def __init__(self, model, view):
         self.model = model
         self.view = view
-
+    #TODO: selbe logik in einer methode zusammenfassen
     def run(self):
         #Schiffstypen
         self.view.show_instruction_ships(self.model.ship_list)
@@ -12,6 +12,7 @@ class Controller:
         print("\nSpieler 1 platziert")
         self.model.display_grid(player=1, show_ships=True)
         self.model.place_ship(player=1)
+        self.model.display_grid(player=1, show_ships=True)
         print("\nFertig Spieler 1:")
         self.model.display_grid(player=1, show_ships=True)
 
@@ -54,7 +55,7 @@ class Controller:
             elif result.startswith("win:"):
                 name = result.split(":",1)[1]
                 print(f"Treffer! Du hast das letzte Schiff ({name}) versenkt.")
-                print(f"Spieler {current} gewinnt! Herzlichen Glückwunsch.")
+                print(f"Spieler {current} gewinnt.")
                 # Zeige Endstände
                 print("\nEndstände:")
                 print("Spieler 1 Board:")
@@ -66,3 +67,4 @@ class Controller:
             if result == "miss":
                 current = opponent
 
+#TODO bzw. variablen am anfang der klasse

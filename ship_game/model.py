@@ -49,6 +49,7 @@ class Model:
                     row = row + " " + c
             print(row)
 
+
     def parse_position(self, pos):
         pos = pos.strip().upper()
         if len(pos) < 2:
