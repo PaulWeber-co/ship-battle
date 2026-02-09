@@ -116,7 +116,8 @@ class Model:
             ship = None
             for s in target_ships:
                 if (y, x) in s.positions:
-                    ship = ship.hit()
+                    ship = s
+            ship.hit()
 
             if ship.is_sunk():
                 alle_versenkt = True
