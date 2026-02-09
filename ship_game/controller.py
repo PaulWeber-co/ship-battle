@@ -3,30 +3,24 @@ class Controller:
     def __init__(self, model, view):
         self.model = model
         self.view = view
-    #TODO: selbe logik in einer methode zusammenfassen
+
+    def _place_ships_for(self, player):
+        print(f"\nSpieler {player} platziert")
+        self.model.display_grid(player=player, show_ships=True)
+        self.model.place_ship(player=player)
+        print(f"\nFertig Spieler {player}:")
+        self.model.display_grid(player=player, show_ships=True)
+
     def run(self):
         #Schiffstypen
         self.view.show_instruction_ships(self.model.ship_list)
 
-        # Spieler 1
-        print("\nSpieler 1 platziert")
-        self.model.display_grid(player=1, show_ships=True)
-        self.model.place_ship(player=1)
-        self.model.display_grid(player=1, show_ships=True)
-        print("\nFertig Spieler 1:")
-        self.model.display_grid(player=1, show_ships=True)
-
-        input("\nWeitergeben an Spieler 2 und Enter drücken...")
-
-        # Spieler 2
-        print("\nSpieler 2 platziert")
-        self.model.display_grid(player=2, show_ships=True)
-        self.model.place_ship(player=2)
-        print("\nFertig Spieler 2:")
-        self.model.display_grid(player=2, show_ships=True)
-
-        input("\nSpiel starten. Enter drücken")
-
+        for player in (1, 2):
+            self._place_ships_for(player)
+            if player == 1:
+                input("\nWeitergeben an Spieler 2 und Enter drücken...")
+            else:
+                input("\nSpiel starten. Enter drücken")
 
         current = 1
         while True:

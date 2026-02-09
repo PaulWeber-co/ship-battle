@@ -94,6 +94,7 @@ class Model:
                     ship.positions.append((y, x + i))
 
                 print(f"{ship.name} platziert bei {chr(ord('A') + y)}{x + 1}.")
+                self.display_grid(player=player, show_ships=True)
                 break
 
     def take_shot(self, player, pos):
